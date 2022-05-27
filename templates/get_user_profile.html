@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block title %}Get: User Profile{% endblock %}
+
+{% block page_content %}
+    <a href="{{ url_for('index') }}">Home</a> | <a href="javascript:window.history.go(-1)">Back</a>
+    <h1>Microsoft Graph &#8212; Single Sign-On (SSO)</h1>
+    <h4 style="font-style: italic; margin-top: 15px;">Get: User Profile</h4>
+
+    <p style="margin-top: 50px; font-weight: bold;">User Email:</p>
+    <p style='word-wrap: break-word; font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:blue;' >{{ user_profile['userPrincipalName'] }}</p>
+
+    <p style="margin-top: 25px; font-weight: bold;">Display Name:</p>
+    <p style='word-wrap: break-word; font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:blue;' >{{ user_profile['displayName'] }}</p>
+
+    <p style="margin-top: 25px; font-weight: bold;">User ID (obtained from Microsoft Azure Active Directory):</p>
+    <p style='word-wrap: break-word; font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:blue;' >{{ user_profile['id'] }}</p>
+
+    <hr/>
+
+    <p style="margin-top: 50px; font-weight: bold;">Raw JSON data:</p>
+    <p style='margin-bottom: 25px; word-wrap: break-word; font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'>
+        {{ user_profile }}
+    </p>
+{% endblock %}
+
+{% block footer_content %}
+    Powered by MSAL Python {{ version }}
+{% endblock %}
